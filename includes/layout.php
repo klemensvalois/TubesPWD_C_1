@@ -122,7 +122,7 @@ function top($title, $active, $showTitle = true, $extraCss = [])
 function bottom()
 {
     echo '</div></main></div>';
-    echo '<script type="text/javascript" src="' . BASE . '/js/app.js?v=' . time() . '"></script>';
+    echo '<script type="text/javascript" src="' . BASE . '/js/app.js"></script>';
     echo '</body></html>';
 }
 

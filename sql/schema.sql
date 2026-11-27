@@ -28,9 +28,3 @@ USE lms_mahasiswa;
 CREATE TABLE mahasiswa(id INT AUTO_INCREMENT PRIMARY KEY, npm VARCHAR(20) UNIQUE, nama VARCHAR(100), email VARCHAR(100) UNIQUE, telp VARCHAR(20), fakultas_id INT, prodi_id INT, gender VARCHAR(10), umur TINYINT, password VARCHAR(255));
 CREATE TABLE pengumpulan(id INT AUTO_INCREMENT PRIMARY KEY, tugas_id INT, mhs_id INT, file VARCHAR(255), catatan VARCHAR(255), waktu TIMESTAMP DEFAULT CURRENT_TIMESTAMP, UNIQUE(tugas_id,mhs_id));
 -- Produksi: buat user MySQL berbeda per peran (GRANT hanya pada DB masing-masing + SELECT lintas-DB seperlunya).
-
--- edit profil -- 
-ALTER TABLE lms_admin.admin ADD COLUMN foto VARCHAR(255) DEFAULT NULL;
-ALTER TABLE lms_dosen.dosen ADD COLUMN foto VARCHAR(255) DEFAULT NULL;
-ALTER TABLE lms_mahasiswa.mahasiswa ADD COLUMN foto VARCHAR(255) DEFAULT NULL;
-

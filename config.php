@@ -120,34 +120,4 @@ function upload($file)
 // Butuh satu parameter "?" berisi id mahasiswa dan alias tabel tugas "t".
 const DL = "COALESCE((SELECT MAX(p.deadline_baru) FROM lms_dosen.perpanjangan p
                       WHERE p.tugas_id = t.id AND p.mhs_id = ?), t.deadline)";
-
-                      /* ---------- Upload foto profil ---------- */
-function upload_foto($file)
-{
-    if (!isset($file) || $file['error'] !== 0) {
-        return null;
-    }
-    // Maksimal 2 MB
-    if ($file['size'] > 2 * 1024 * 1024) {
-        return null;
-    }
-
-    $ext     = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-    $allowed = ['jpg', 'jpeg', 'png', 'gif'];
-    if (!in_array($ext, $allowed, true)) {
-        return null;
-    }
-
-    $folder = __DIR__ . '/uploads/profil';
-    if (!is_dir($folder)) {
-        mkdir($folder, 0777, true);
-    }
-
-    $namaFile = 'profil_' . time() . '_' . rand(100, 999) . '.' . $ext;
-    if (move_uploaded_file($file['tmp_name'], $folder . '/' . $namaFile)) {
-        return $namaFile;
-    }
-    return null;
-}
 ?>
-
